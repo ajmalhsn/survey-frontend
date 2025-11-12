@@ -7,6 +7,7 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm ci
+RUN npm install -D terser
 
 # Copy source code
 COPY . .
