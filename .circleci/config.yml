@@ -1,0 +1,39 @@
+version: 2.1
+jobs:
+  build-and-deploy:
+    docker:
+      - image: cimg/node:18.0.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Test
+          command: npm run lint
+      - store_artifacts:
+          path: dist
+          destination: build
+      - deploy:
+          name: Deploy to hosting
+          command: |
+            if [ "${CIRCLE_BRANCH}" = "main" ]; then
+              echo "Deploying to production..."
+              # Add your deployment command here
+            fi
+workflows:
+  version: 2.1
+  build-and-deploy:
+    jobs:
+      - build-and-deploy

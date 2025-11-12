@@ -1,0 +1,19 @@
+{
+  "name": "survey-frontend",
+  "description": "Survey Frontend Application",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "VITE_API_URL": {
+      "description": "API endpoint URL",
+      "value": ""
+    },
+    "VITE_ENABLE_ANALYTICS": {
+      "description": "Enable analytics tracking",
+      "value": "true"
+    }
+  }
+}
