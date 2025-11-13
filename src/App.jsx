@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Mic, Square } from 'lucide-react';
 
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = 'https://frontend-189731478679.europe-west1.run.app/api';
 const COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
 
 export default function SurveyApp() {
